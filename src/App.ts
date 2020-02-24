@@ -10,7 +10,7 @@ import routes from './routes'
 import { Message } from './types'
 
 /**
- * App
+ * @class App
  */
 export default class App {
   public app: Application
@@ -29,12 +29,10 @@ export default class App {
   }
 
   private middlewares(): void {
-    const { CLIENT_HOST } = process.env
-
     this.app.use(
       cors({
         credentials: true,
-        origin: CLIENT_HOST || 'http://localhost:3000',
+        origin: process.env.CLIENT_HOST || 'http://localhost:3000',
       })
     )
     this.app.use(morgan('dev'))

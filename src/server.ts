@@ -4,6 +4,4 @@ const { http } = new App()
 
 const PORT = process.env.PORT || 3001
 
-http.listen(PORT, () => {
-  console.log(`Servidor inicializado em: ${PORT}`)
-})
+http.listen(PORT, () => console.log(`Servidor inicializado em: ${PORT}`))
