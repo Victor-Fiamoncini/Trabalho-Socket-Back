@@ -29,12 +29,7 @@ export default class App {
   }
 
   private middlewares(): void {
-    this.app.use(
-      cors({
-        credentials: true,
-        origin: process.env.CLIENT_HOST || 'http://localhost:3000',
-      })
-    )
+    this.app.use(cors())
     this.app.use(morgan('dev'))
     this.app.use(routes)
   }
