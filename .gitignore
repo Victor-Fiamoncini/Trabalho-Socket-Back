@@ -1,0 +1,13 @@
+# NodeJS
+node_modules
+
+# Environment variables
+*.env
+
+# lock files
+*.lock
+
+# Build versions
+dist
+build
+
