@@ -10,7 +10,7 @@
     "dev": "nodemon src/server.ts",
     "prebuild": "rimraf dist",
     "start": "node dist/server",
-    "build": "sucrase ./src -d ./dist --transforms typescript,imports && yarn start"
+    "build": "sucrase ./src -d ./dist --transforms typescript,imports"
   },
   "dependencies": {
     "cors": "^2.8.5",
