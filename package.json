@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "nodemon src/server.ts",
     "prebuild": "rimraf dist",
-    "build": "sucrase ./src -d ./dist --transforms typescript,imports"
+    "start": "node dist/server",
+    "build": "sucrase ./src -d ./dist --transforms typescript,imports && yarn start"
   },
   "dependencies": {
     "cors": "^2.8.5",
