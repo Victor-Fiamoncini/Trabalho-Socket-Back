@@ -2,6 +2,10 @@
   "name": "trabalho-sd-sockets",
   "version": "1.0.0",
   "license": "proprietary",
+  "engines": {
+    "node": "12.10.0",
+    "yarn": "1.19.1"
+  },
   "scripts": {
     "dev": "nodemon src/server.ts",
     "prebuild": "rimraf dist",
