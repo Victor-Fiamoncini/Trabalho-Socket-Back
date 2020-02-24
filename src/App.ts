@@ -31,7 +31,12 @@ export default class App {
   private middlewares(): void {
     const { CLIENT_HOST } = process.env
 
-    this.app.use(cors({ credentials: true, origin: CLIENT_HOST }))
+    this.app.use(
+      cors({
+        credentials: true,
+        origin: CLIENT_HOST || 'http://localhost:3000',
+      })
+    )
     this.app.use(morgan('dev'))
     this.app.use(routes)
   }
