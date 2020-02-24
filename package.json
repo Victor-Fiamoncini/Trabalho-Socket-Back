@@ -1,10 +1,10 @@
 {
   "name": "trabalho-sd-sockets",
   "version": "1.0.0",
-  "license": "proprietary",
+  "license": "MIT",
   "engines": {
-    "node": "12.10.0",
-    "yarn": "1.19.1"
+    "node": "^10.19.0",
+    "yarn": "^1.19.1"
   },
   "scripts": {
     "dev": "nodemon src/server.ts",
