@@ -37,10 +37,17 @@ export default class App {
 
   private socket(): void {
     this.io.on('connection', (client: Socket) => {
-      client.emit('connected', `Você está conectado, seu ID é: ${client.id}`)
+      client.emit(
+        'connected',
+        `REP: Você está conectado, seu ID é: ${client.id}`
+      )
 
-      client.on('message', ({ name, content }: DTOMessage) => {
-        client.broadcast.emit('message', { name, content })
+      client.on('newMessage', ({ name, content }: DTOMessage) => {
+        client.broadcast.emit('broadcastMessage', { name, content })
+      })
+
+      client.on('newMessageRecall', () => {
+        client.emit('singleMessage', 'REP: Mensagem recebida')
       })
 
       client.on('disconnect', () => {
