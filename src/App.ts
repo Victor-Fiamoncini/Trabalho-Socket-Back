@@ -7,7 +7,8 @@ import { config } from 'dotenv'
 import { resolve } from 'path'
 
 import routes from './routes'
-import { Message } from './types'
+
+import { DTOMessage } from './types'
 
 /**
  * @class App
@@ -36,19 +37,15 @@ export default class App {
 
   private socket(): void {
     this.io.on('connection', (client: Socket) => {
-      console.log('O cliente connectou')
+      client.emit('connected', `Você está conectado, seu ID é: ${client.id}`)
 
-      client.on('connected', (message: string) => {
-        console.log(message)
-      })
-
-      client.on('message', ({ name, content }: Message) => {
-        console.log(name, content)
-
+      client.on('message', ({ name, content }: DTOMessage) => {
         client.broadcast.emit('message', { name, content })
       })
 
-      client.on('disconnect', () => console.log('O cliente desconectou'))
+      client.on('disconnect', () => {
+        client.emit('disconnected', `Sua conexão expirou`)
+      })
     })
   }
 }
