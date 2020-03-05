@@ -11,7 +11,7 @@ import routes from './routes'
 import { DTOMessage } from './types'
 
 /**
- * @class App
+ * App
  */
 export default class App {
   public app: Application
@@ -51,7 +51,7 @@ export default class App {
       })
 
       client.on('disconnect', () => {
-        client.emit('disconnected', `Sua conexão expirou`)
+        client.emit('disconnected', 'REP: Você foi desconectado')
       })
     })
   }
