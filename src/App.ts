@@ -37,22 +37,32 @@ export default class App {
 
   private socket(): void {
     this.io.on('connection', (client: Socket) => {
+      console.log(`REP: Você está conectado, seu ID é: ${client.id}`)
+
       client.emit(
         'connected',
         `REP: Você está conectado, seu ID é: ${client.id}`
       )
 
       client.on('newMessage', ({ name, content }: DTOMessage) => {
-        client.broadcast.emit('broadcastMessage', { name, content })
+        const delay = this.getRandomNumber(1000, 10000)
+
+        setTimeout(() => {
+          console.log(`Delay de resposta de ${delay}`)
+
+          client.broadcast.emit('broadcastMessage', { name, content })
+          client.emit(
+            'singleMessage',
+            `REP: Mensagem recebida, delay de ${delay}`
+          )
+        }, delay)
       })
 
-      client.on('newMessageRecall', () => {
-        client.emit('singleMessage', 'REP: Mensagem recebida')
-      })
-
-      client.on('disconnect', () => {
-        client.emit('disconnected', 'REP: Você foi desconectado')
-      })
+      client.on('disconnect', () => console.log('REP: Você foi desconectado'))
     })
+  }
+
+  private getRandomNumber(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min
   }
 }
