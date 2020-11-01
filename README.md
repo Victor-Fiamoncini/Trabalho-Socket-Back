@@ -1,6 +1,6 @@
 # Socket Backend Project
 
-TCP Socket work backend - Distributed Systems Discipline - 💙 Built with Express, Typescript, SocketIO ...
+TCP Socket work backend - Distributed Systems Discipline - Built with Express, Typescript, SocketIO ...
 
 ----------
 Released in 2020. This project is under the MIT license.
